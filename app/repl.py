@@ -10,7 +10,7 @@ from app.commands.divide import Divide
 from app.plugin_manager import PluginManager
 from app.commands.history import add_to_history, save_history, load_history, clear_history
 
-# Load logging configuration
+
 config = configparser.ConfigParser()
 config.read("logging.conf")
 logging.config.fileConfig(config)
@@ -22,7 +22,7 @@ def repl():
     logger.info("Advanced Python Calculator started. Type 'exit' to quit.")
     print("Advanced Python Calculator. Type 'exit' to quit.")
 
-    # Initialize commands and plugin manager
+    
     add_command = Add()
     subtract_command = Subtract()
     multiply_command = Multiply()
@@ -68,7 +68,7 @@ def repl():
             try:
                 a, b = float(parts[1]), float(parts[2])
                 
-                # Execute the appropriate command
+                
                 if command == "add":
                     result = add_command.execute(a, b)
                     add_to_history("add", a, b, result)

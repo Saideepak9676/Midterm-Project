@@ -9,21 +9,21 @@ import logging
 import logging.config
 import configparser
 
-# Ensure the logs directory exists
+
 os.makedirs('logs', exist_ok=True)
 
-# Define the path to the logging configuration file
+
 log_config_path = os.path.abspath("logging.conf")
 
-# Configure logging
+
 try:
-    # Verify logging.conf exists before loading
+    
     if os.path.exists(log_config_path):
         logging.config.fileConfig(log_config_path)
     else:
         raise FileNotFoundError(f"Logging configuration file not found at {log_config_path}")
 except Exception as e:
-    # Fall back to basicConfig if fileConfig fails
+    
     print(f"Error loading logging configuration: {e}. Falling back to basicConfig.")
     logging.basicConfig(
         filename='logs/app.log',

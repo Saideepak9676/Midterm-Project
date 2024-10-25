@@ -18,7 +18,7 @@ class TestCommandUnit(unittest.TestCase):
     def test_command_execute_with_args(self):
         """Test execute with arguments."""
         result = self.command.execute(1, 2, 3)
-        self.assertEqual(result, "Executed")  # Modify this if you expect a different behavior
+        self.assertEqual(result, "Executed")  
 
 if __name__ == "__main__":
     unittest.main()

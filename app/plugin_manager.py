@@ -1,7 +1,7 @@
 import importlib.util
 import os
 import pkgutil
-from app.plugins.plugin import Plugin  # Import abstract Plugin class
+from app.plugins.plugin import Plugin  
 
 class PluginManager:
     def __init__(self, plugin_dir):
@@ -18,16 +18,16 @@ class PluginManager:
                 continue
             
             try:
-                # Dynamically import the module
+                
                 spec = importlib.util.spec_from_file_location(module_name, os.path.join(plugin_dir_str, f"{module_name}.py"))
                 module = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(module)
 
-                # Identify classes in the module that inherit from Plugin and instantiate them
+              
                 for attr_name in dir(module):
                     attr = getattr(module, attr_name)
                     if isinstance(attr, type) and issubclass(attr, Plugin) and attr is not Plugin:
-                        plugin_instance = attr()  # Instantiate the plugin
+                        plugin_instance = attr()  
                         self.plugins[module_name] = plugin_instance
                         print(f"Loaded plugin: {module_name}")
                         break

@@ -86,9 +86,13 @@ class PluginManager:
 ```
 
 ### 3. Singleton Pattern
+
 The Singleton Pattern ensures that a class has only one instance and provides a global access point to that instance. This is used for managing the logging configuration'
 
-'''python
+**Implementation**
+It implemented in the LogManager class, which ensures only one instance is created using the __new__ method, providing consistent logging configuration management across the application.
+
+```python
 class LogManager:
     _instance = None
     def __new__(cls):
@@ -98,7 +102,30 @@ class LogManager:
         return cls._instance
     def setup_logging(self):
         # Setup logging configuration
-        ---
+
+```
+
+### 4. Factory method pattern
+
+The Factory Method Pattern is used to create objects without specifying the exact class of object that will be created. This pattern promotes loose coupling and allows for better scalability.
+
+Implementation: In this project, a factory method could be implemented to create command instances based on user input, enhancing flexibility.
+
+```python
+class CommandFactory:
+    @staticmethod
+    def create_command(command_type):
+        if command_type == "add":
+            return Add()
+        elif command_type == "subtract":
+            return Subtract()
+        elif command_type == "multiply":
+            return Multiply()
+        elif command_type == "divide":
+            return Divide()
+        else:
+            raise ValueError("Unknown command type")
+```
         
 ## Environment Variables
 
